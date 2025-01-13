@@ -50,7 +50,7 @@ public class YenConverter {
         System.out.println(convertedAmount);
         String aJapaneseFormat = "";
         aJapaneseFormat = convertToJapaneseFormat(convertedAmount);
-        System.out.println(aJapaneseFormat);
+        // System.out.println(aJapaneseFormat);
         return aJapaneseFormat;
     }
 }
