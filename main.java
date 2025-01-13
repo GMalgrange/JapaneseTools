@@ -1,26 +1,16 @@
-import Converter.YenConverter;
-import Display.ConverterVisual;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-// import javax.swing.JTextField;
-public static void main(String[] args) {
+import Manager.ConverterManager;
 
-    ConverterVisual aPrompt = new ConverterVisual();
-    aPrompt.setUpGUI();   
-    aPrompt.getReplyButton().addActionListener(new ActionListener() {
-        YenConverter aConverter = new YenConverter();
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // Get the text from the text field
-            if(!aPrompt.getTextAmount().getText().isEmpty())
-            {
-                String convertedJFormat = aConverter.convertEuroToYenWrapper(Long.valueOf(aPrompt.getTextAmount().getText()), aPrompt.getTextRate().getText());
-                aPrompt.getResultField().setText("Converted Amount: " + convertedJFormat);    
-            }
-            else
-            {
-                aPrompt.getResultField().setText("Please enter an amount"); 
-            }
-        }
-    });
+public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+    System.out.println("Choose an option\n 1 for Euro to Yen Converter");
+
+    String option = myObj.nextLine();  // Read user input
+    System.out.println("Username is: " + option);
+    if(option.equals("1"))
+    {
+        System.out.println("Booting Euro to Yen Converter");
+        ConverterManager aManager = new ConverterManager();
+        aManager.manageConverter();
+    }
+    myObj.close();
 }
