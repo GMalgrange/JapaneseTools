@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Converter.*;
 
 public class Prompt {
     
@@ -29,22 +30,25 @@ public class Prompt {
             frame.setLayout(new FlowLayout());
     
             // Create a text field (text box)
-            JTextField textField = new JTextField(20);
+            JTextField textFieldAmnt = new JTextField(20);
+            JTextField textFieldRate = new JTextField(20);
     
             // Create a button
             JButton button = new JButton("Submit");
     
             // Create a label to display the result (optional)
-            JLabel resultLabel = new JLabel("Enter text and click the button.");
+            JLabel resultLabel = new JLabel(oMessage);
     
             // Add an action listener to the button
             button.addActionListener(new ActionListener() {
+                YenConverter aConverter = new YenConverter();
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     // Get the text from the text field
-                    inputText = textField.getText(); // Update the inputText variable
+                    inputText = textFieldAmnt.getText(); // Update the inputText variable
                     System.out.println("Text entered: " + inputText);
-                    resultLabel.setText("You entered: " + inputText);
+                    String convertedJFormat = aConverter.convertEuroToYenWrapper(Long.valueOf(inputText), textFieldRate.getText());
+                    resultLabel.setText("Converted Amount: " + convertedJFormat);
 
                                     // Notify the listener (if registered)
                 if (listener != null) {
@@ -55,7 +59,8 @@ public class Prompt {
     
             // Add components to the frame
             frame.add(new JLabel("Enter some text:"));
-            frame.add(textField);
+            frame.add(textFieldAmnt);
+            frame.add(textFieldRate);
             frame.add(button);
             frame.add(resultLabel);
     
