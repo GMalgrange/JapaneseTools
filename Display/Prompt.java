@@ -1,4 +1,4 @@
-package Utils;
+package Display;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import Converter.*;
 
 public class Prompt {
     
-    private String inputText = ""; // Variable to store the text entered
+    private String inputAmount = ""; // Variable to store the text entered
     public interface TextSubmitListener {
         void onTextSubmit(String text);
     }
@@ -24,17 +24,20 @@ public class Prompt {
 
         // Method to create and display the GUI
             // Create a new JFrame (main window)
-            JFrame frame = new JFrame("Text Box Example");
+            JFrame frame = new JFrame("Euro to Yen Converter");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 200);
-            frame.setLayout(new FlowLayout());
+            Container contentPane = frame.getContentPane();
+            contentPane.setSize(400, 200);
+
+            GridLayout layout = new GridLayout(0,2);
+            contentPane.setLayout(layout);
     
             // Create a text field (text box)
             JTextField textFieldAmnt = new JTextField(20);
             JTextField textFieldRate = new JTextField(20);
     
             // Create a button
-            JButton button = new JButton("Submit");
+            JButton button = new JButton("Convert");
     
             // Create a label to display the result (optional)
             JLabel resultLabel = new JLabel(oMessage);
@@ -45,25 +48,36 @@ public class Prompt {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     // Get the text from the text field
-                    inputText = textFieldAmnt.getText(); // Update the inputText variable
-                    System.out.println("Text entered: " + inputText);
-                    String convertedJFormat = aConverter.convertEuroToYenWrapper(Long.valueOf(inputText), textFieldRate.getText());
-                    resultLabel.setText("Converted Amount: " + convertedJFormat);
-
+                    inputAmount = textFieldAmnt.getText(); // Update the inputAmount variable
+                    System.out.println("Text entered: " + inputAmount);
+                    if(!inputAmount.isEmpty())
+                    {
+                        String convertedJFormat = aConverter.convertEuroToYenWrapper(Long.valueOf(inputAmount), textFieldRate.getText());
+                        resultLabel.setText("Converted Amount: " + convertedJFormat);    
+                    }
+                    else
+                    {
+                        resultLabel.setText("Please enter an amount"); 
+                    }
                                     // Notify the listener (if registered)
                 if (listener != null) {
-                    listener.onTextSubmit(inputText);
+                    listener.onTextSubmit(inputAmount);
                 }
                 }
             });
     
             // Add components to the frame
-            frame.add(new JLabel("Enter some text:"));
-            frame.add(textFieldAmnt);
-            frame.add(textFieldRate);
-            frame.add(button);
-            frame.add(resultLabel);
-    
+            JLabel label1 = new JLabel("Enter Amount in Euro:");
+            JLabel label2 = new JLabel("Enter Exchange rate: ");
+            contentPane.add(label1);
+            contentPane.add(textFieldAmnt);
+            contentPane.add(label2);
+            contentPane.add(textFieldRate);
+            contentPane.add(button);
+            contentPane.add(resultLabel);
+
+            /************************************************* */
+            frame.pack();
             // Make the frame visible
             frame.setVisible(true);
     }

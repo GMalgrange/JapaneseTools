@@ -1,4 +1,4 @@
-import Utils.Prompt;
+import Display.Prompt;
 public static void main(String[] args) {
 
     Prompt aPrompt = new Prompt();
@@ -10,7 +10,7 @@ public static void main(String[] args) {
             System.out.println("Text received in Main: " + text);
         }
     });
-    aPrompt.promptAmount("Please input a Value in Euro");
+    aPrompt.promptAmount("");
     // new Thread(() -> {
     //     try {
     //         // Wait until the user submits text
