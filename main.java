@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import Manager.ConverterManager;
+import Manager.JapanEraConverterManager;
 
 public static void main(String[] args) {
     Scanner myObj = new Scanner(System.in);  // Create a Scanner object
@@ -16,7 +17,7 @@ public static void main(String[] args) {
     }
     else if(option.equals("2")){
         System.out.println("Booting Year format Converter");
-        JapanYearFormatConverter aConverter = new JapanYearFormatConverter();
+        JapanEraConverterManager aConverter = new JapanEraConverterManager();
         aConverter.DateConverterManager();
     }
     myObj.close();
