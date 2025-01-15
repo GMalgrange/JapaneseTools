@@ -1,18 +1,41 @@
 package Manager;
 
-import java.util.Scanner;
 import Converter.JapanYearFormatConverter;
+import Display.EraConverterVisual;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class JapanEraConverterManager {
     
     public void DateConverterManager()
     {
-        System.out.println("Enter a Date in Georgian"); 
-        Scanner aScanner = new Scanner(System.in); 
-        String aDate = aScanner.nextLine();
-        System.out.println("Date entered is: " + aDate); 
-        JapanYearFormatConverter aConverter = new JapanYearFormatConverter();
-        aConverter.ConvertDateToJapaneseFormat(aDate);
-        aScanner.close();
+        EraConverterVisual aVisual = new EraConverterVisual();
+        aVisual.setUpGUI();
+        aVisual.getReplyButton().addActionListener( new ActionListener() {
+            JapanYearFormatConverter aConverter = new JapanYearFormatConverter();    
+            @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Get the text from the text field
+                    if(!aVisual.getInputYearField().getText().isEmpty())
+                    {
+                        String convertedJFormat = aConverter.ConvertDateToJapaneseFormat(aVisual.getInputYearField().getText());
+                        System.out.println(convertedJFormat);
+                        aVisual.getResultField().setText("Converted Date: " + convertedJFormat);    
+                    }
+                    else
+                    {
+                        aVisual.getResultField().setText("Please enter an Year"); 
+                    }
+                }
+            });
+
+        // System.out.println("Enter a Date in Georgian convention"); 
+        // Scanner aScanner = new Scanner(System.in); 
+        // String aDate = aScanner.nextLine();
+        // System.out.println("Date entered is: " + aDate); 
+        
+        // aScanner.close();
+        // aVisual.setUpGUI(aConverter.ConvertDateToJapaneseFormat(aDate));
+
     }
 }

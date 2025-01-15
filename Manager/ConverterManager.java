@@ -8,21 +8,21 @@ import java.awt.event.ActionListener;
 public class ConverterManager {
 
     public void manageConverter(){
-        ConverterVisual aPrompt = new ConverterVisual();
-            aPrompt.setUpGUI();
-            aPrompt.getReplyButton().addActionListener(new ActionListener() {
+        ConverterVisual aVisual = new ConverterVisual();
+            aVisual.setUpGUI();
+            aVisual.getReplyButton().addActionListener(new ActionListener() {
                 YenConverter aConverter = new YenConverter();
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     // Get the text from the text field
-                    if(!aPrompt.getTextAmount().getText().isEmpty())
+                    if(!aVisual.getTextAmount().getText().isEmpty())
                     {
-                        String convertedJFormat = aConverter.convertEuroToYenWrapper(Long.valueOf(aPrompt.getTextAmount().getText()), aPrompt.getTextRate().getText());
-                        aPrompt.getResultField().setText("Converted Amount: " + convertedJFormat);    
+                        String convertedJFormat = aConverter.convertEuroToYenWrapper(Long.valueOf(aVisual.getTextAmount().getText()), aVisual.getTextRate().getText());
+                        aVisual.getResultField().setText("Converted Amount: " + convertedJFormat);    
                     }
                     else
                     {
-                        aPrompt.getResultField().setText("Please enter an amount"); 
+                        aVisual.getResultField().setText("Please enter an amount"); 
                     }
                 }
             });
