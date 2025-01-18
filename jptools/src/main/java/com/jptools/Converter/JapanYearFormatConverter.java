@@ -1,7 +1,4 @@
-package Converter;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Date;
+package jptools.src.main.java.com.jptools.Converter;
 
 import java.util.Collections;
 import java.util.HashMap;

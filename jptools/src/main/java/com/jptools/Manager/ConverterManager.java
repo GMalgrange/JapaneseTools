@@ -1,9 +1,10 @@
-package Manager;
+package jptools.src.main.java.com.jptools.Manager;
 
-import Converter.YenConverter;
-import Display.ConverterVisual;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import jptools.src.main.java.com.jptools.Converter.YenConverter;
+import jptools.src.main.java.com.jptools.Display.ConverterVisual;
 
 public class ConverterManager {
 

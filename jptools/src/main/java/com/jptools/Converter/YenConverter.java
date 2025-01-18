@@ -1,4 +1,4 @@
-package Converter;
+package jptools.src.main.java.com.jptools.Converter;
 
 import java.text.DecimalFormat;
 import java.util.Map;

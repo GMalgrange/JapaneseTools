@@ -1,4 +1,4 @@
-package Display;
+package jptools.src.main.java.com.jptools.Display;
 
 import javax.swing.*;
 import java.awt.*;

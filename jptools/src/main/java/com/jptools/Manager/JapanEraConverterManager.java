@@ -1,9 +1,10 @@
-package Manager;
+package jptools.src.main.java.com.jptools.Manager;
 
-import Converter.JapanYearFormatConverter;
-import Display.EraConverterVisual;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import jptools.src.main.java.com.jptools.Converter.JapanYearFormatConverter;
+import jptools.src.main.java.com.jptools.Display.EraConverterVisual;
 
 public class JapanEraConverterManager {
     
